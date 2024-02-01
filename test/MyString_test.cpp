@@ -85,9 +85,9 @@ TEST_CASE("test MyString_5"){
     result = result + k;
     CHECK(result == "0123456789k"); 
     CHECK((numbers += numbers) == "01234567890123456789");
-    CHECK(numbers+numbers == "0123456789012345678901234567890123456789");
+    CHECK(numbers+result == "012345678901234567890123456789");
     numbers.push_back('M');
-    CHECK(numbers == "0123456789012345678901234567890123456789M"); 
+    CHECK(numbers == "012345678901234567890123456789M"); 
     numbers = b;
     CHECK(numbers == MyString('B')); 
 }
