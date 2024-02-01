@@ -53,24 +53,36 @@ TEST_CASE("test MyString_2"){
     MyString b('B');
     MyString numbers ("0123456789");
 // MyString constructor
-    
+    const char * check_str = "0123456789";
+    CHECK(strcmp(numbers.c_str(), check_str) == 0);
+}
+TEST_CASE("test MyString_3"){
+    MyString b('B');
+    MyString numbers ("0123456789");
+// MyString constructor
+    CHECK(numbers.front() == '0');
+    CHECK(numbers.back() == '9');
+}
+TEST_CASE("test MyString_4"){
+    MyString b('B');
+    MyString numbers ("0123456789");
+// MyString constructor
     const char * check_str = "0123456789";
     MyString start ("012");
     MyString end("789");
-    CHECK(strcmp(numbers.c_str(), check_str) == 0);
-    CHECK(numbers.front() == '0');
-    CHECK(numbers.back() == '9');
     CHECK(numbers.empty() == false);
     CHECK(numbers.size() == 10);  
     CHECK(numbers.substr(0,2) == "01");
     CHECK(numbers.starts_with(start) == true);
     CHECK(numbers.ends_with(end) == true);
+}
+TEST_CASE("test MyString_5"){
+    MyString b('B');
+    MyString numbers ("0123456789");
     CHECK((numbers += numbers) == "01234567890123456789");
     CHECK(numbers + numbers == "0123456789012345678901234567890123456789");
     numbers.push_back('M');
     CHECK(numbers == "01234567890123456789M"); 
     numbers = b;
     CHECK(numbers == MyString('B')); 
-
-
 }
