@@ -4,7 +4,6 @@
 TEST_CASE("test MyString") {
     MyString a ;
     MyString b('B');
-    MyString numbers ("0123456789"); 
 
 //default constructor
     CHECK(strcmp(a.c_str(), "") == 0);
@@ -29,7 +28,6 @@ TEST_CASE("test MyString") {
 TEST_CASE("test MyString_1"){
     MyString a;
     MyString b('B');
-    MyString numbers ("0123456789"); 
     a = b;
 // char constructor
     char x = 'B';
@@ -50,24 +48,20 @@ TEST_CASE("test MyString_1"){
 }
 
 TEST_CASE("test MyString_2"){
-    MyString b('B');
     MyString numbers ("0123456789");
 // MyString constructor
     const char * check_str = "0123456789";
     CHECK(strcmp(numbers.c_str(), check_str) == 0);
 }
 TEST_CASE("test MyString_3"){
-    MyString b('B');
     MyString numbers ("0123456789");
 // MyString constructor
     CHECK(numbers.front() == '0');
     CHECK(numbers.back() == '9');
 }
 TEST_CASE("test MyString_4"){
-    MyString b('B');
     MyString numbers ("0123456789");
 // MyString constructor
-    const char * check_str = "0123456789";
     MyString start ("012");
     MyString end("789");
     CHECK(numbers.empty() == false);
