@@ -294,9 +294,21 @@ MyString& MyString::operator=(MyString && source) {
     return *this;
 }
 
-bool MyString::operator==(MyString &source)
+bool MyString::operator==(const MyString &source)
 {
     if (strcmp(str,source.str) == 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool MyString::operator==(const char * source)
+{
+    if (strcmp(str,source) == 0)
     {
         return true;
     }

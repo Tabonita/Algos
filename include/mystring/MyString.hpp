@@ -33,8 +33,8 @@ class MyString
     MyString& operator=(char * source);
     MyString& operator=(MyString & source);
     MyString& operator=(MyString && source);
-    bool operator==(MyString &source);
-
+    bool operator==(const MyString &source);
+    bool operator==(const char * source);
     bool operator==(MyString &&source);
 
 
