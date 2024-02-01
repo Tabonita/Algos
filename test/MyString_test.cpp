@@ -19,7 +19,9 @@ TEST_CASE("test MyString") {
     CHECK(a.ends_with(b) == false);
     CHECK(a == MyString());
     CHECK((a += a) == MyString());
-    CHECK(a + a == MyString());
+    MyString result (a);
+    result = result + a;
+    CHECK(result == MyString());
     a.push_back('M');
     CHECK(a == MyString('M')); 
     a = b;
@@ -31,6 +33,7 @@ TEST_CASE("test MyString_1"){
     a = b;
 // char constructor
     char x = 'B';
+    char k = 'k';
     CHECK((b.c_str()[0] == x));
     CHECK(b.front() == 'B');
     CHECK(b.back() == 'B');
@@ -40,28 +43,31 @@ TEST_CASE("test MyString_1"){
     CHECK(b.starts_with(b) == true);
     CHECK(b.ends_with(b) == true);
     CHECK((b += b) == "BB");
-    CHECK(b + b == "BBBB");
+    CHECK(b+b == "BBBB");
+    b = b + k;
+    CHECK(b == "BBBBk");
     b.push_back('M');
-    CHECK(b == "BBM"); 
+    CHECK(b == "BBBBkM"); 
     b = a;
     CHECK(b == MyString('B')); 
 }
 
 TEST_CASE("test MyString_2"){
+    
     MyString numbers ("0123456789");
-// MyString constructor
+//const char *  constructor
     const char * check_str = "0123456789";
     CHECK(strcmp(numbers.c_str(), check_str) == 0);
 }
 TEST_CASE("test MyString_3"){
     MyString numbers ("0123456789");
-// MyString constructor
+//const char *  constructor
     CHECK(numbers.front() == '0');
     CHECK(numbers.back() == '9');
 }
 TEST_CASE("test MyString_4"){
     MyString numbers ("0123456789");
-// MyString constructor
+//const char *  constructor
     MyString start ("012");
     MyString end("789");
     CHECK(numbers.empty() == false);
@@ -72,12 +78,17 @@ TEST_CASE("test MyString_4"){
 }
 TEST_CASE("test MyString_5"){
     MyString b('B');
+    char k = 'k'; 
     MyString numbers ("0123456789");
+    MyString result (numbers);
+    CHECK(result == numbers);
+    result = result + k;
+    CHECK(result == "0123456789k"); 
     CHECK((numbers += numbers) == "01234567890123456789");
-    //MyString result = numbers+numbers;
-    //CHECK(result == "0123456789012345678901234567890123456789");
+    CHECK(numbers+numbers == "0123456789012345678901234567890123456789");
     numbers.push_back('M');
-    CHECK(numbers == "01234567890123456789M"); 
+    CHECK(numbers == "0123456789012345678901234567890123456789M"); 
     numbers = b;
     CHECK(numbers == MyString('B')); 
 }
+

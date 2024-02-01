@@ -212,40 +212,45 @@ MyString& MyString::operator+=(const MyString & other)
     }
 
 }
+
+MyString& MyString::operator+=(const char & c)
+{
+    this->push_back(c);
+    return *this;
+}
+
 MyString& MyString::operator+(const MyString & other)
 {
-    if (*str!='\0' && *other.str!='\0')
-    {
-        char * new_str = new char [strlen(str)+strlen(other.str)+1];
-        new_str = strcpy(new_str, str);
-        new_str = strcat(new_str, other.str);
-        MyString * new_string = new MyString(new_str);
-        return *new_string;
-    }
-    else if (*str=='\0' && *other.str!='\0')
-    {
-        char * new_str = new char [strlen(other.str)];
-        new_str = strcpy(new_str, other.str);
-        MyString * new_string = new MyString(new_str);
-        return *new_string;
-    }
-    else if (*str!='\0' && *other.str=='\0')
-    {
-        char * new_str = new char [strlen(str)];
-        new_str = strcpy(new_str, str);
-        MyString * new_string = new MyString(new_str);
-        return *new_string;
-    }
-    else
-    {
-        MyString * new_string = new MyString();
-        return *new_string;
-    }
-
+    // if (*str!='\0' && *other.str!='\0')
+    // {
+    //     char * new_str = new char [strlen(str)+strlen(other.str)+1];
+    //     new_str = strcpy(new_str, str);
+    //     new_str = strcat(new_str, other.str);
+    //     delete [] str;
+    //     str = new_str;
+    //     new_str = nullptr;
+    //     return *this;
+    // }
+    // else if (*str=='\0' && *other.str!='\0')
+    // {
+    //     char * new_str = new char [strlen(other.str)];
+    //     new_str = strcpy(new_str, other.str);
+    //     delete [] str;
+    //     str = new_str;
+    //     new_str = nullptr;
+    //     return *this;
+    // }
+    // else
+    // {
+    //     return *this;
+    // }
+    this->operator+=(other);
+    return *this;
 }
+
 MyString& MyString::operator+(const char & c)
 {
-    push_back(c);
+    this->push_back(c);
     return *this;
 }
 
@@ -311,4 +316,16 @@ bool MyString::operator==(MyString &&source)
     {
         return false;
     }
+}
+
+MyString& MyString:: operator=(char * source)
+{
+    if(strcmp(str,source) == 0)
+    {
+        return *this;
+    }
+    delete [] str;
+    str = new char [strlen(source)];
+    strcpy(str,source);
+    return *this;
 }

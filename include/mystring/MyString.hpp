@@ -26,12 +26,15 @@ class MyString
     bool ends_with(const MyString& part_str) const;
     void push_back(char c);
     MyString& operator+=( const MyString & other);
+    MyString& operator+=(const char & c);
     MyString& operator+( const MyString & other);
     MyString& operator+(const char & c);
     std::ostream& operator<< (std::ostream& os);
+    MyString& operator=(char * source);
     MyString& operator=(MyString & source);
     MyString& operator=(MyString && source);
-    bool operator==( MyString &source);
+    bool operator==(MyString &source);
+
     bool operator==(MyString &&source);
 
 
