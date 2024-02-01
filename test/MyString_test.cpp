@@ -74,7 +74,7 @@ TEST_CASE("test MyString_5"){
     MyString b('B');
     MyString numbers ("0123456789");
     CHECK((numbers += numbers) == "01234567890123456789");
-    //CHECK(numbers + numbers == "0123456789012345678901234567890123456789");
+    CHECK(numbers + numbers == "0123456789012345678901234567890123456789");
     //numbers.push_back('M');
     //CHECK(numbers == "01234567890123456789M"); 
     //numbers = b;
