@@ -2,9 +2,9 @@
 #include <mystring/MyString.hpp>
 
 TEST_CASE("test MyString") {
-    MyString a; 
+    MyString a ;
     MyString b('B');
-    MyString numbers ("0123456789");
+    MyString numbers ("0123456789"); 
 
 //default constructor
     CHECK(strcmp(a.c_str(), "") == 0);
@@ -25,6 +25,12 @@ TEST_CASE("test MyString") {
     CHECK(a == MyString('M')); 
     a = b;
     CHECK(a == MyString('B')); 
+}
+TEST_CASE("test MyString_1"){
+    MyString a;
+    MyString b('B');
+    MyString numbers ("0123456789"); 
+    a = b;
 // char constructor
     char x = 'B';
     CHECK((b.c_str()[0] == x));
@@ -41,7 +47,11 @@ TEST_CASE("test MyString") {
     CHECK(b == "BBM"); 
     b = a;
     CHECK(b == MyString('B')); 
+}
 
+TEST_CASE("test MyString_2"){
+    MyString b('B');
+    MyString numbers ("0123456789");
 // MyString constructor
     
     const char * check_str = "0123456789";
@@ -59,7 +69,7 @@ TEST_CASE("test MyString") {
     CHECK(numbers + numbers == "0123456789012345678901234567890123456789");
     numbers.push_back('M');
     CHECK(numbers == "01234567890123456789M"); 
-    numbers = a;
+    numbers = b;
     CHECK(numbers == MyString('B')); 
 
 
