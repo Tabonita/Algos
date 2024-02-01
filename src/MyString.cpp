@@ -255,11 +255,27 @@ MyString& MyString::operator=(MyString & source) {
         return *this;
     }
     delete [] str;
-
-    str = new char [strlen(source.str)];
-    strcpy(str,source.str);
-    //std::cout <<str<<" copy-assigned" << std::endl;
+    if (source.size()>1 )
+    {
+        str = new char [strlen(source.str)];
+        strcpy(str,source.str);
+        //std::cout <<str<<" copy-assigned" << std::endl;
+        
+    }
+    else if (source.size() == 1)
+    {
+        str = new char[2]; 
+        str[0] = source.str[0];
+        str[1] = '\0';
+        
+    }
+    else
+    {
+        str = new char[1]; 
+        str[0] = '\0';
+    }
     return *this;
+
 }
 MyString& MyString::operator=(MyString && source) {
     if (this == &source)
