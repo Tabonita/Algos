@@ -5,9 +5,9 @@ class Node
     friend class Iterator;
     friend class MyList;
     private:
-    Node * prev;
-    int data;
-    Node * next;
+    Node * prev = nullptr;
+    int data = 0;
+    Node * next = nullptr;
 
    public:
    Node();
@@ -19,7 +19,7 @@ class Node
 class Iterator
 {
     private:
-    Node* it;
+    Node* it = nullptr;
 
     public:
     Iterator();

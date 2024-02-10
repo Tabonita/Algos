@@ -1,7 +1,7 @@
 #include <my_list/list.hpp>
 
-Node::Node():data{0},prev{nullptr},next{nullptr}{
-    };
+ Node::Node():data{0},prev{nullptr},next{nullptr}{
+     };
 Node::Node(int int_data):data{int_data},prev{nullptr},next{nullptr}{
     }
 Node::~ Node(){
@@ -13,9 +13,10 @@ Iterator::Iterator():it{nullptr}{};
 
 Iterator::Iterator(Node* node):it{node}{};
 Iterator::Iterator(const Iterator& iter){
-        it->data = iter.it->data;
-        it->next = iter.it->next;
-        it->prev = iter.it->prev;
+        this->it = new Node;
+        this->it->data = iter.it->data;
+        this->it->next = iter.it->next;
+        this->it->prev = iter.it->prev;
 };
 
 Node* Iterator::get_it()
@@ -90,6 +91,7 @@ Iterator& Iterator::operator-(const int& num)
 }
 
  Iterator::~ Iterator(){
+
     }
 
 MyList::MyList(const std::initializer_list<int> &args)
