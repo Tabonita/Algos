@@ -1,8 +1,8 @@
 #include <my_list/list.hpp>
 
- Node::Node():data{0},prev{nullptr},next{nullptr}{
+ Node::Node():prev{nullptr},data{0},next{nullptr}{
      };
-Node::Node(int int_data):data{int_data},prev{nullptr},next{nullptr}{
+Node::Node(int int_data):prev{nullptr},data{int_data},next{nullptr}{
     }
 Node::~ Node(){
         }
