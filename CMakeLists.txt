@@ -28,20 +28,20 @@ endif()
 
 find_package(argparse REQUIRED)
 
-add_library(sequence src/sequence.cpp)
+add_library(sequence src/sequence.cpp src/list.cpp)
 target_sources(
   sequence PUBLIC
   FILE_SET HEADERS
   BASE_DIRS include
-  FILES include/my_fibonacci/sequence.hpp
+  FILES include/my_fibonacci/sequence.hpp include/my_list/list.hpp
 )
-target_compile_features(sequence PRIVATE cxx_std_11)
+target_compile_features(sequence PRIVATE cxx_std_17)
 
 add_executable(generate_sequence src/main.cpp)
 target_link_libraries(generate_sequence PUBLIC argparse::argparse sequence)
 
 # Declare test targets if it is not a subproject and testing is enabled.
-if(NOT SUBPROJECT AND BUILD_TESTING)
+if(NOT SUBPROJECT )
   enable_testing()
 
   find_package(Catch2 REQUIRED)
@@ -49,7 +49,10 @@ if(NOT SUBPROJECT AND BUILD_TESTING)
   get_target_property(sequence_SOURCES sequence SOURCES)
   get_target_property(sequence_HEADER_DIRS sequence HEADER_DIRS)
 
-  add_executable(sequence_test test/sequence_test.cpp ${sequence_SOURCES})
+  target_sources(sequence PRIVATE src/list.cpp include/my_list/list.hpp)
+
+  #add_executable(sequence_test test/sequence_test.cpp ${sequence_SOURCES} test/bubble_test.cpp)
+  add_executable(sequence_test ${sequence_SOURCES} test/list_test.cpp)
   target_include_directories(sequence_test PRIVATE ${sequence_HEADER_DIRS})
   target_link_libraries(sequence_test PRIVATE Catch2::Catch2WithMain)
 
