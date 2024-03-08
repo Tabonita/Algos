@@ -1,21 +1,40 @@
 #include <catch2/catch_test_macros.hpp>
 #include <bubble/bubble_sort.hpp>
 
-TEST_CASE("test bubble sort") {
-
+TEST_CASE("Random vector") {
   std::vector<int> vec1 = {5, 2, 8, 1, 3};
   bubbleSort(vec1.begin(),vec1.end());
-  std::vector<int> vec2 = {1, 2, 100, 0, -5,-70};
-  bubbleSort(vec2.begin(),vec2.end());
-  std::vector<int> vec3 = {10};
-  bubbleSort(vec3.begin(),vec3.end());
-  std::vector<int> vec4 = {};
-  bubbleSort(vec4.begin(),vec4.end());
-  std::vector<int> vec5 = {0,5,0,2346,0,-2,0};
-  bubbleSort(vec5.begin(),vec5.end());
   CHECK(vec1 == std::vector<int>{8,5,3,2,1});
-  CHECK(vec2 == std::vector<int>{100,2,1,0,-5,-70});
-  CHECK(vec3 == std::vector<int>{10});
-  CHECK(vec4 == std::vector<int>{});
-  CHECK(vec5 == std::vector<int>{2346,5,0,0,0,0,-2});
+}
+TEST_CASE("Sorted vector in descending order") {
+  std::vector<int> vec1 = {8,5,3,2,1};
+  bubbleSort(vec1.begin(),vec1.end());
+  CHECK(vec1 == std::vector<int>{8,5,3,2,1});
+}
+
+TEST_CASE("Sorted vector in ascending order") {
+  std::vector<int> vec1 = {1,2,3,5,8};
+  bubbleSort(vec1.begin(),vec1.end());
+  CHECK(vec1 == std::vector<int>{8,5,3,2,1});
+}
+
+TEST_CASE("Empty vector") {
+  std::vector<int> vec1 = {};
+  bubbleSort(vec1.begin(),vec1.end());
+  CHECK(vec1 == std::vector<int>{});
+}
+TEST_CASE("1 element vector") {
+  std::vector<int> vec1 = {10};
+  bubbleSort(vec1.begin(),vec1.end());
+  CHECK(vec1 ==std::vector<int>{10});
+}
+TEST_CASE("negative numbers") {
+  std::vector<int> vec1 = {-5,-10,-15,-100,-1};
+  bubbleSort(vec1.begin(),vec1.end());
+  CHECK(vec1 == std::vector<int>{-1,-5,-10,-15,-100});
+}
+TEST_CASE("Repeated numbers") {
+  std::vector<int> vec1 = {-5,-5,10,0,0,500,-500,-5};
+  bubbleSort(vec1.begin(),vec1.end());
+  CHECK(vec1 == std::vector<int>{500,10,0,0,-5,-5,-5,-500});
 }
