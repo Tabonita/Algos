@@ -51,7 +51,7 @@ if(NOT SUBPROJECT )
 
   target_sources(sequence PRIVATE src/heapsort.cpp include/heapsort/heapsort.hpp)
 
-  //add_executable(sequence_test test/sequence_test.cpp ${sequence_SOURCES} test/heapsort.cpp)
+  #add_executable(sequence_test test/sequence_test.cpp ${sequence_SOURCES} test/heapsort.cpp)
   add_executable(sequence_test ${sequence_SOURCES} test/heapsort_test.cpp)
   target_include_directories(sequence_test PRIVATE ${sequence_HEADER_DIRS})
   target_link_libraries(sequence_test PRIVATE Catch2::Catch2WithMain)
