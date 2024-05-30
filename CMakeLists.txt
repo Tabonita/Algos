@@ -28,20 +28,20 @@ endif()
 
 find_package(argparse REQUIRED)
 
-add_library(sequence src/sequence.cpp src/heapsort.cpp)
+add_library(sequence src/sequence.cpp)
 target_sources(
   sequence PUBLIC
   FILE_SET HEADERS
   BASE_DIRS include
-  FILES include/my_fibonacci/sequence.hpp include/heapsort/heapsort.hpp
+  FILES include/my_fibonacci/sequence.hpp
 )
-target_compile_features(sequence PRIVATE cxx_std_17)
+target_compile_features(sequence PRIVATE cxx_std_11)
 
 add_executable(generate_sequence src/main.cpp)
 target_link_libraries(generate_sequence PUBLIC argparse::argparse sequence)
 
 # Declare test targets if it is not a subproject and testing is enabled.
-if(NOT SUBPROJECT )
+if(NOT SUBPROJECT AND BUILD_TESTING)
   enable_testing()
 
   find_package(Catch2 REQUIRED)
@@ -49,10 +49,7 @@ if(NOT SUBPROJECT )
   get_target_property(sequence_SOURCES sequence SOURCES)
   get_target_property(sequence_HEADER_DIRS sequence HEADER_DIRS)
 
-  target_sources(sequence PRIVATE src/heapsort.cpp include/heapsort/heapsort.hpp)
-
-  #add_executable(sequence_test test/sequence_test.cpp ${sequence_SOURCES} test/heapsort.cpp)
-  add_executable(sequence_test ${sequence_SOURCES} test/heapsort_test.cpp)
+  add_executable(sequence_test test/sequence_test.cpp ${sequence_SOURCES})
   target_include_directories(sequence_test PRIVATE ${sequence_HEADER_DIRS})
   target_link_libraries(sequence_test PRIVATE Catch2::Catch2WithMain)
 
