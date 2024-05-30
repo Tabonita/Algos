@@ -1,12 +1,12 @@
 #include <heapsort/heapsort.hpp>
 
-void exchange (int& a, int& b)
-{
-    int temp;
-    temp = a;
+
+void exchange(int& a, int& b) {
+    int temp = a;
     a = b;
     b = temp;
 }
+
 void sink (std::vector <int> & array, int k, int n)
 {
     int son;
