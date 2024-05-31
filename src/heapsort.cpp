@@ -47,17 +47,17 @@ void sink (std::vector <int> & array, int k, int n)
 
 }
 
-std::vector <int> heap_sort(std::vector <int> array)
+std::vector <int> heapsort(std::vector <int> array)
 {
     std::vector <int> sorted = array;
-    if (array.size() > 1)
+    if (sorted.size() > 1)
     {
-        int n = sorted.size();
-        for (int i = n/2; i >= 0; i--)
+        int n = sorted.size() - 1;
+        for (int i = n/2; i >= 0; --i)
         {
             sink (sorted,i,n);
         } 
-        for (int k = n; k > 0; k--)
+        for (int k = n; k > 0; --k)
         {
             exchange(sorted.at(0),sorted.at(k));
             sink(sorted,0, k - 1);
