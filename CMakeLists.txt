@@ -41,6 +41,7 @@ find_package(Catch2 REQUIRED)
 
 add_library(algos_test_lib OBJECT
   test/bubble_test.cpp
+  test/heapsort_test.cpp
 )
 target_link_libraries(algos_test_lib PUBLIC algos Catch2::Catch2)
 
