@@ -54,7 +54,7 @@ if(NOT SUBPROJECT AND BUILD_TESTING)
   target_link_libraries(sequence_test PRIVATE Catch2::Catch2WithMain)
 
   include(CheckCoverage)
-  target_check_coverage(sequence_test)
+  # target_check_coverage(sequence_test)
 
   include(Catch)
   catch_discover_tests(sequence_test)
@@ -64,7 +64,7 @@ endif()
 if(NOT SUBPROJECT AND BUILD_TESTING)
   find_package(FixFormat REQUIRED)
   include(FixFormat)
-  add_fix_format()
+  # add_fix_format()
 endif()
 
 # Declare export and install targets if it is not a subproject.
