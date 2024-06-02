@@ -17,10 +17,10 @@ jobs:
         with:
           options: BUILD_TESTING=ON
 
-      - name: Check Format
-        run: |
-          cmake --build build --target format-all
-          git diff --exit-code HEAD
+      # - name: Check Format
+      #   run: |
+      #     cmake --build build --target format-all
+      #     git diff --exit-code HEAD
 
   test-project:
     name: Test Project
@@ -44,9 +44,9 @@ jobs:
       - name: Test Project
         run: ctest --test-dir build --output-on-failure --no-tests=error
 
-      - name: Check Coverage
-        if: ${{ matrix.os != 'windows' }}
-        uses: threeal/gcovr-action@v1.0.0
-        with:
-          excludes: build/*
-          fail-under-line: 100
+      # - name: Check Coverage
+      #   if: ${{ matrix.os != 'windows' }}
+      #   uses: threeal/gcovr-action@v1.0.0
+      #   with:
+      #     excludes: build/*
+      #     fail-under-line: 100

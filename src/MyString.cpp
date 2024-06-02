@@ -15,7 +15,7 @@ MyString::MyString():str{nullptr}
     str = new char[1]; 
     str[0] = '\0';
     //std::cout<<"Default Constr have been called for "<<str<<std::endl;
-};
+}
 
 MyString::MyString(const char& c):str{nullptr}
 {
