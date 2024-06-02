@@ -20,6 +20,7 @@ find_package(argparse REQUIRED)
 
 add_library(algos
   src/bubble_sort.cpp
+  src/heapsort.cpp
 )
 target_sources(
   algos PUBLIC
@@ -27,6 +28,7 @@ target_sources(
   BASE_DIRS include
   FILES
     include/bubble/bubble_sort.hpp
+    include/heapsort/heapsort.hpp
 )
 target_compile_features(algos PRIVATE cxx_std_17)
 
@@ -39,6 +41,7 @@ find_package(Catch2 REQUIRED)
 
 add_library(algos_test_lib OBJECT
   test/bubble_test.cpp
+  test/heapsort_test.cpp
 )
 target_link_libraries(algos_test_lib PUBLIC algos Catch2::Catch2)
 
